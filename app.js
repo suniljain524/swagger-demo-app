@@ -1,7 +1,7 @@
 'use strict';
 
-const SwaggerExpress = require('swagger-express-mw');
-const app = require('express')();
+var SwaggerExpress = require('swagger-express-mw');
+var app = require('express')();
 module.exports = app; // for testing
 
 let config = {
@@ -11,8 +11,8 @@ let config = {
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
-  // install middleware
-  swaggerExpress.register(app);
+  require('./middlewares/swagger').init(app, swaggerExpress, { });
+  require('./middlewares/error').init(app);
 
   var port = process.env.PORT || 10010;
   app.listen(port, () => {

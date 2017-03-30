@@ -1,0 +1,271 @@
+{
+  "httpStatusCodes": {
+    "100": {
+      "status": "continue",
+      "message": "Continue"
+    },
+    "101": {
+      "status": "switching_protocols",
+      "message": "Switching Protocols"
+    },
+    "102": {
+      "status": "processing",
+      "message": "Processing"
+    },
+    "200": {
+      "status": "ok",
+      "message": "OK"
+    },
+    "201": {
+      "status": "created",
+      "message": "Created"
+    },
+    "202": {
+      "status": "accepted",
+      "message": "Accepted"
+    },
+    "203": {
+      "status": "non_authoritative",
+      "message": "Non-Authoritative Information"
+    },
+    "204": {
+      "status": "no_content",
+      "messsage": "No Content"
+    },
+    "205": {
+      "status": "reset_content",
+      "message": "Reset Content"
+    },
+    "206": {
+      "status": "partial_content",
+      "message": "Partial Content"
+    },
+    "207": {
+      "status": "multi_status",
+      "message": "Multi-Status"
+    },
+    "208": {
+      "status": "already_reported",
+      "message": "Already Reported"
+    },
+    "226": {
+      "status": "im_used",
+      "message": "IM used"
+    },
+    "300": {
+      "status": "multiple_choices",
+      "message": "Multiple Choices"
+    },
+    "301": {
+      "status": "moved_permanently",
+      "message": "Moved Permanently"
+    },
+    "302": {
+      "status": "found",
+      "message": "Found"
+    },
+    "303": {
+      "status": "see_other",
+      "message": "See Other"
+    },
+    "304": {
+      "status": "not_modified",
+      "message": "Not Modified"
+    },
+    "305": {
+      "status": "use_proxy",
+      "message": "Use Proxy"
+    },
+    "306": {
+      "status": "switch_proxy",
+      "message": "Switch Proxy"
+    },
+    "307": {
+      "status": "temporary_redirect",
+      "message": "Temporary Redirect"
+    },
+    "308": {
+      "status": "permanent_redirect",
+      "message": "Permanent Redirect"
+    },
+    "400": {
+      "status": "bad_request",
+      "message": "Bad Request"
+    },
+    "401": {
+      "status": "unauthorized",
+      "message": "Unauthorized"
+    },
+    "402": {
+      "status": "payment_required",
+      "message": "Payment Required"
+    },
+    "403": {
+      "status": "forbidden",
+      "message": "Forbidden"
+    },
+    "404": {
+      "status": "not_found",
+      "message": "Not Found"
+    },
+    "405": {
+      "status": "method_not_allowed",
+      "message": "Method Not Allowed"
+    },
+    "406": {
+      "status": "not_acceptable",
+      "messsage": "Not Acceptable"
+    },
+    "407": {
+      "status": "proxy_authentication_required",
+      "message": "Proxy Authentication Required"
+    },
+    "408": {
+      "status": "request_timeout",
+      "message": "Request Timeout"
+    },
+    "409": {
+      "status": "conflict",
+      "message": "Conflict"
+    },
+    "410": {
+      "status": "gone",
+      "message": "Gone"
+    },
+    "411": {
+      "status": "length_required",
+      "message": "Length Required"
+    },
+    "412": {
+      "status": "precondition_failed",
+      "message": "Precondition Failed"
+    },
+    "413": {
+      "status": "payload_too_large",
+      "message": "Payload Too Large"
+    },
+    "414": {
+      "status": "uri_too_long",
+      "message": "URI Too Long"
+    },
+    "415": {
+      "status": "unsupported_media_type",
+      "messsage": "Unsupported Media Type"
+    },
+    "416": {
+      "status": "range_not_satisfiable",
+      "messsage": "Range Not Satisfiable"
+    },
+    "417": {
+      "status": "expectation_failed",
+      "message": "Expectation Failed"
+    },
+    "418": {
+      "status": "im_a_teapot",
+      "message": "I'm a teapot"
+    },
+    "421": {
+      "status": "misdirected_request",
+      "message": "Misdirected Request"
+    },
+    "422": {
+      "status": "unprocessable_entity",
+      "message": "Unprocessable Entity"
+    },
+    "423": {
+      "status": "locked",
+      "message": "Locked"
+    },
+    "424": {
+      "status": "failed_dependency",
+      "messsage": "Failed Dependency"
+    },
+    "426": {
+      "status": "upgrade_required",
+      "message": "Upgrade Required"
+    },
+    "428": {
+      "status": "precondition_required",
+      "message": "Precondition Required"
+    },
+    "429": {
+      "status": "too_many_requests",
+      "message": "Too Many Requests"
+    },
+    "431": {
+      "status": "request_header_fields_too_large",
+      "message": "Request Header Fields Too Large"
+    },
+    "451": {
+      "status": "unavailable_for_legal_reasons",
+      "message": "Unavailable for Legal Reasons"
+    },
+    "500": {
+      "status": "internal_server_error",
+      "message": "Internal Server Error"
+    },
+    "501": {
+      "status": "not_implemented",
+      "message": "Not implemented"
+    },
+    "502": {
+      "status": "bad_gateway",
+      "message": "Bad Gateway"
+    },
+    "503": {
+      "status": "service_unavailable",
+      "message": "Service Unavailable"
+    },
+    "504": {
+      "status": "gateway_timeout",
+      "messsage": "Gateway Timeout"
+    },
+    "505": {
+      "status": "http_version_not_supported",
+      "messsage": "HTTP Version Not Supported"
+    },
+    "506": {
+      "status": "variant_also_negotiates",
+      "message": "Variant Also Negotiates"
+    },
+    "507": {
+      "status": "insufficient_storage",
+      "message": "Insufficient Storage"
+    },
+    "508": {
+      "status": "loop_detected",
+      "message": "Loop Detected"
+    },
+    "510": {
+      "status": "not_extended",
+      "message": "Not Extended"
+    },
+    "511": {
+      "status": "network_authentication_required",
+      "messsage": "Network Authentication Required"
+    }
+  },
+  "customErrorCodes": {
+    "bad_request": {
+      "statusCode": 400
+    },
+    "not_found": {
+      "statusCode": 404
+    },
+    "incorrect_existing_password": {
+      "statusCode": 422
+    },
+    "internal_error": {
+      "statusCode": 500
+    },
+    "invalid_request": {
+      "statusCode": 400
+    },
+    "invalid_reset_password_token": {
+      "statusCode": 401
+    },
+    "expired_reset_password_token": {
+      "statusCode": 401
+    }
+  }
+}

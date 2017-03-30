@@ -2,7 +2,8 @@
 
 # values in the swagger hash are system configuration for swagger
 swagger:
-  mapErrorsToJson: true
+  #TODO: Remove this line if error handling works correctly.
+  # mapErrorsToJson: true
   docEndpoints:
     raw: /swagger
 

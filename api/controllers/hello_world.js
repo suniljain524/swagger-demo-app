@@ -1,6 +1,7 @@
 'use strict';
 
 var util = require('util');
+const AppError = require('../../lib/app_error');
 
 module.exports = {
   hello: hello

@@ -8,3 +8,13 @@ swagger:
     raw: /swagger
 
 # any other values in this file are just loaded into the config for application access...
+
+database:
+  user: root
+  password: ''
+  database: test123 # database name
+  host: localhost
+  port:
+  pool:
+    min: 0
+    max: 10

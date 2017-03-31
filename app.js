@@ -1,19 +1,34 @@
 'use strict';
 
-var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
-var helmet = require('helmet')
+let SwaggerExpress = require('swagger-express-mw');
+let app = require('express')();
+let helmet = require('helmet');
+let _ = require('lodash');
 module.exports = app; // for testing
 
-app.use(helmet())
+app.use(helmet());
 
-let config = {
+let config = app.config = {
   appRoot: __dirname // required config
 };
 
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
+  _.extend(app.config, swaggerExpress.runner.config);
+
+  app.config.database = {
+    user: app.config.database.user,
+    password: app.config.database.password,
+    database: app.config.database.database,
+    host: app.config.database.host,
+    port: app.config.database.port,
+    pool: {
+      min: app.config.database.pool.min || 1,
+      max: app.config.database.pool.max || 1
+    }
+  };
+  require('./middlewares/db').init(app, { });
   require('./middlewares/swagger').init(app, swaggerExpress, { });
   require('./middlewares/error').init(app);
 

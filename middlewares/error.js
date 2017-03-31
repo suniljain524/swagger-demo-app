@@ -30,7 +30,7 @@ function init(app, config) {
         res.status(customError.statusCode)
           .json({error: appError.error, message: appError.message})
       }
-    } else if(res.statusCode) {
+    } else if(res.statusCode && res.statusCode !== 200) {
       res.status(res.statusCode)
         .json({error: errorCodes.httpStatusCodes[res.statusCode].status,
           message: errorCodes.httpStatusCodes[res.statusCode].message

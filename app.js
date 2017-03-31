@@ -2,7 +2,10 @@
 
 var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
+var helmet = require('helmet')
 module.exports = app; // for testing
+
+app.use(helmet())
 
 let config = {
   appRoot: __dirname // required config

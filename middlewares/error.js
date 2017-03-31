@@ -24,13 +24,11 @@ function init(app, config) {
   app.use((err, req, res, next) => {
     let defaultStatusCode = 500;
     if (err instanceof AppError) {
-      let customError = err.message;
-      let errorType = customError.error
-      let e = errorCodes.customErrorCodes[errorType]
-      if (errorCodes.customErrorCodes.hasOwnProperty(customError.error)) {
-
-        res.status(e.statusCode)
-          .json({error: customError.error, message: customError.message})
+      let appError = err.message;
+      if (errorCodes.customErrorCodes.hasOwnProperty(appError.error)) {
+        let customError = errorCodes.customErrorCodes[appError.error];
+        res.status(customError.statusCode)
+          .json({error: appError.error, message: appError.message})
       }
     } else if(res.statusCode) {
       res.status(res.statusCode)

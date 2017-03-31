@@ -16,10 +16,7 @@ function init(app, config) {
   }
 
   app.use((req, res, next) => {
-    pool.getConnection((err, connection) => {
-      if (err) return next(err)
-      req.conn = connection
-      next()
-    })
+    req.conn = pool;
+    next()
   })
 }

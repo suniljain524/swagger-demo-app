@@ -1,22 +1,26 @@
 'use strict';
 
 var mysql = require('mysql')
-
+var mongodb = require('mongodb').MongoClient;
 
 module.exports = {
   init: init
 };
 
-var initialized = false, pool;
+var initialized = false, mysqlConn, mongodbConn;
 
-function init(app, config) {
+function init(app) {
   if (!initialized) {
-    pool = mysql.createPool(app.config.database);
+    mysqlConn = mysql.createPool(app.config.mysqlDatabase);
+    mongodb.connect(app.config.mongoDatabase.url, function(err, database) {
+      mongodbConn = database
+    });
     initialized = true;
   }
 
   app.use((req, res, next) => {
-    req.conn = pool;
+    req.mysqlConn = mysqlConn;
+    req.mongodbConn = mongodbConn;
     next()
   })
 }

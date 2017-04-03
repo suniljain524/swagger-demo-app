@@ -17,18 +17,7 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
 
   _.extend(app.config, swaggerExpress.runner.config);
 
-  app.config.database = {
-    user: app.config.database.user,
-    password: app.config.database.password,
-    database: app.config.database.database,
-    host: app.config.database.host,
-    port: app.config.database.port,
-    pool: {
-      min: app.config.database.pool.min || 1,
-      max: app.config.database.pool.max || 1
-    }
-  };
-  require('./middlewares/db').init(app, { });
+  require('./middlewares/db').init(app);
   require('./middlewares/swagger').init(app, swaggerExpress, { });
   require('./middlewares/error').init(app);
 

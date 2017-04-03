@@ -11,6 +11,7 @@
     "express": "^4.12.3",
     "helmet": "^3.5.0",
     "lodash": "^4.17.4",
+    "mongodb": "^2.2.25",
     "mysql": "^2.13.0",
     "swagger-express-mw": "^0.1.0"
   },

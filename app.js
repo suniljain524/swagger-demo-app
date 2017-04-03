@@ -4,6 +4,7 @@ let SwaggerExpress = require('swagger-express-mw');
 let app = require('express')();
 let helmet = require('helmet');
 let _ = require('lodash');
+
 module.exports = app; // for testing
 
 app.use(helmet());
@@ -18,6 +19,7 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   _.extend(app.config, swaggerExpress.runner.config);
 
   require('./middlewares/db').init(app);
+  require('./middlewares/cache').init(app);
   require('./middlewares/swagger').init(app, swaggerExpress, { });
   require('./middlewares/error').init(app);
 

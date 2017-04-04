@@ -13,6 +13,8 @@ let config = app.config = {
   appRoot: __dirname // required config
 };
 
+app.use('/health-check', require('./routes/health'));
+
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 

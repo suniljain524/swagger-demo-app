@@ -4,8 +4,12 @@
 swagger:
   #TODO: Remove this line if error handling works correctly.
   # mapErrorsToJson: true
-  docEndpoints:
-    raw: /swagger
+  staticUrls:
+    - /swagger
+  bagpipes:
+    # pipe to serve swagger (endpoint is in swagger.yaml)
+      swagger_raw:
+        name: swagger_raw
 
 # mysql config.
 mysqlDatabase:

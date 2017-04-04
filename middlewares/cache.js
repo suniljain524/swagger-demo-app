@@ -12,7 +12,7 @@ function init(app) {
   let config = app.config.redis || {};
   app.use(function (req, res, next) {
 
-    var staticUrls = req.app.config.staticUrls || [];
+    var staticUrls = req.app.config.swagger.staticUrls || [];
     if (_.find(staticUrls, function(url) {
       return url == req.url;
     })) {

@@ -1,6 +1,8 @@
 'use strict';
 
 const util = require('util');
+const fs = require("fs");
+
 let AppError = require('../../lib/app_error');
 
 // TODO: Remove this, it is for testing
@@ -13,6 +15,7 @@ module.exports = {
   testMysql: testMysql,
   testMongo: testMongo,
   testRedis: testRedis,
+  imageUpload: imageUpload
 };
 
 function testMysql(req, res, next) {
@@ -46,4 +49,17 @@ function testRedis(req, res, next) {
   req.cache.hgetAllAsync('frameworks')
     .then((response) => res.json(response))
     .catch((e) => next(e));
+}
+
+function imageUpload(req, res, next) {
+
+  let reqPath = req.swagger.params.upfile.originalValue;
+  var path = 'uploads/';
+  fs.writeFile( path + reqPath.originalname, reqPath.buffer , (err) => {
+    if (err) {
+      var err = { message: 'File not uploaded' };
+      return next(err);
+    }
+    res.json("File uploaded");
+  });
 }

@@ -20,7 +20,7 @@ produces:
 paths:
   /mysql-api:
     # binds a127 app logic to a route
-    x-swagger-router-controller: hello_world
+    x-swagger-router-controller: test_controller
     get:
       description: Returns 'Hello' to the caller
       # used as the method name of the controller
@@ -36,14 +36,14 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
   /mongo-api:
-    x-swagger-router-controller: hello_world
+    x-swagger-router-controller: test_controller
     get:
       description: Returns 'Hello' to the caller
       operationId: testMongo
@@ -57,13 +57,13 @@ paths:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/SuccessResponse"
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
   /redis-api:
-    x-swagger-router-controller: hello_world
+    x-swagger-router-controller: test_controller
     get:
       description: Returns 'Hello' to the caller
       operationId: testRedis
@@ -77,7 +77,28 @@ paths:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /image-upload:
+    x-swagger-router-controller: test_controller
+    post:
+      description: Returns 'File uploaded'
+      operationId: imageUpload
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: upfile
+          type: file
+          description: The file to upload.
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
         default:
           description: Error
           schema:
@@ -86,7 +107,7 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  HelloWorldResponse:
+  SuccessResponse:
     required:
       - message
     properties:

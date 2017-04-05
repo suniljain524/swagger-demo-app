@@ -1,0 +1,21 @@
+{
+  "mysqlDatabase": {
+    "user": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "port": "",
+    "pool": {
+      "min": "",
+      "max": ""
+    }
+  },
+  "mongoDatabase": {
+    "url": ""
+  },
+  "redis": {
+    "host": "",
+    "port": "",
+    "onFailError": "",
+    "expiry": ""
+  }}

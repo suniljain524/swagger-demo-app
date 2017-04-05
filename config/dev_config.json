@@ -1,0 +1,21 @@
+{
+  "mysqlDatabase": {
+    "user": "root",
+    "password": "",
+    "database": "test123",
+    "host": "localhost",
+    "port": "",
+    "pool": {
+      "min": 0,
+      "max": 10
+    }
+  },
+  "mongoDatabase": {
+    "url": "mongodb://localhost:27017/local"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "onFailError": true,
+    "expiry": 1000
+  }}

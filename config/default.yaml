@@ -4,31 +4,5 @@
 swagger:
   #TODO: Remove this line if error handling works correctly.
   # mapErrorsToJson: true
-  staticUrls:
-    - /swagger
-  bagpipes:
-    # pipe to serve swagger (endpoint is in swagger.yaml)
-      swagger_raw:
-        name: swagger_raw
-
-# mysql config.
-mysqlDatabase:
-  user: root
-  password: ''
-  database: test123 # database name
-  host: localhost
-  port:
-  pool:
-    min: 0
-    max: 10
-
-# mongodb config.
-mongoDatabase:
-  url: mongodb://localhost:27017/local
-
-# redis config.
-redis:
-  host: localhost
-  port: 6379
-  onFailError: true
-  expiry: 1000 # Expiry time in seconds
+  docEndpoints:
+    raw: /swagger

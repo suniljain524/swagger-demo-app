@@ -1,5 +1,7 @@
 'use strict';
 
+const devConfig = require('./config/dev_config.json');
+const prodConfig = require('./config/prod_config.json');
 let SwaggerExpress = require('swagger-express-mw');
 let app = require('express')();
 let helmet = require('helmet');
@@ -19,6 +21,8 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
   _.extend(app.config, swaggerExpress.runner.config);
+
+  process.env.SERVER_ENVIRONMENT == 'prod' ? _.extend(app.config, prodConfig) : _.extend(app.config, devConfig);
 
   require('./middlewares/db').init(app);
   require('./middlewares/cache').init(app);

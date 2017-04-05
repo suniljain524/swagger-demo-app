@@ -13,6 +13,13 @@ var initialized = false, mysqlConn, mongodbConn;
 function init(app) {
   if (!initialized) {
     mysqlConn = mysql.createPool(app.config.mysqlDatabase);
+
+    // check mysql database connection
+    mysqlConn.getConnection((err, connection) => {
+      if (err) throw(err);
+      connection.release();
+    });
+
     mongodb.connect(app.config.mongoDatabase.url, function(err, database) {
       mongodbConn = database
     });

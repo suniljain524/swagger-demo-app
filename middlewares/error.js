@@ -16,6 +16,12 @@ function init(app, config) {
 
   // this is the NOT FOUND handler that returns the not found error object.
   app.use( (req, res, next) => {
+    var staticUrls = req.app.config.swagger.staticUrls || [];
+    if (_.find(staticUrls, function(url) {
+      return url == req.url;
+    })) {
+      return next();
+    }
     var err = new AppError({ error: 'not_found', message: 'Not Found' });
     return next(err);
   });

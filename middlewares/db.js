@@ -2,6 +2,7 @@
 
 var mysql = require('mysql')
 var mongodb = require('mongodb').MongoClient;
+var _ = require('lodash');
 
 module.exports = {
   init: init
@@ -26,6 +27,12 @@ function init(app) {
   }
 
   app.use((req, res, next) => {
+    var staticUrls = req.app.config.swagger.staticUrls || [];
+    if (_.find(staticUrls, function(url) {
+      return url == req.url;
+    })) {
+      return next();
+    }
     req.mysqlConn = mysqlConn;
     req.mongodbConn = mongodbConn;
     next()

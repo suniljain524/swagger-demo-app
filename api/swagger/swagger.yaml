@@ -103,6 +103,47 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /authenticate/token:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: test_controller
+    post:
+      description: Returns access token.
+      # used as the method name of the controller
+      operationId: getToken
+      parameters:
+        - name: body
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/authenticateTokenRequest'
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/SuccessResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /authenticate/test:
+    x-swagger-router-controller: test_controller
+    get:
+      description: Test token
+      # used as the method name of the controller
+      operationId: testToken
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/SuccessResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -113,6 +154,29 @@ definitions:
     properties:
       message:
         type: string
+  authenticateTokenRequest:
+    required:
+      - username
+      - password
+    properties:
+      username:
+        description: The username of user.
+        type: string
+      password:
+        description: A password of user.
+        type: string
+  AuthTokenResponse:
+    required:
+      - access_token
+      - expires_in
+    properties:
+      access_token:
+        type: string
+        description: The token used for granting access.
+      expires_in:
+        type: integer
+        format: int64
+        description: Number of seconds before the token expires.
   ErrorResponse:
     required:
       - message

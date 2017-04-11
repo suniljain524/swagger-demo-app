@@ -266,6 +266,9 @@
     },
     "expired_reset_password_token": {
       "statusCode": 401
+    },
+    "unauthorized": {
+      "statusCode": 401
     }
   }
 }

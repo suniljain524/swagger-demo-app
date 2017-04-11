@@ -29,24 +29,42 @@ function init(app, config) {
   // Error handler
   app.use((err, req, res, next) => {
     let defaultStatusCode = 500;
-    if (err instanceof AppError) {
-      let appError = err.message;
-      if (errorCodes.customErrorCodes.hasOwnProperty(appError.error)) {
-        let customError = errorCodes.customErrorCodes[appError.error];
-        res.status(customError.statusCode)
-          .json({error: appError.error, message: appError.message})
+    try {
+      _formatSwaggerError(err);
+      if (err instanceof AppError) {
+        let appError = err.message;
+        if (errorCodes.customErrorCodes.hasOwnProperty(appError.error)) {
+          let customError = errorCodes.customErrorCodes[appError.error];
+          res.status(customError.statusCode)
+            .json({error: appError.error, message: appError.message})
+        }
+      } else if(res.statusCode && res.statusCode !== 200) {
+        res.status(res.statusCode)
+          .json({error: errorCodes.httpStatusCodes[res.statusCode].status,
+            message: errorCodes.httpStatusCodes[res.statusCode].message
+        })
+      } else {
+        res.status(defaultStatusCode)
+          .json({error: errorCodes.httpStatusCodes[defaultStatusCode].status,
+            message: errorCodes.httpStatusCodes[defaultStatusCode].message
+          })
       }
-    } else if(res.statusCode && res.statusCode !== 200) {
-      res.status(res.statusCode)
-        .json({error: errorCodes.httpStatusCodes[res.statusCode].status,
-          message: errorCodes.httpStatusCodes[res.statusCode].message
-      })
-    } else {
+    } catch (e) {
       res.status(defaultStatusCode)
         .json({error: errorCodes.httpStatusCodes[defaultStatusCode].status,
           message: errorCodes.httpStatusCodes[defaultStatusCode].message
-      })
+        })
     }
-  })
+  });
+}
 
+function _formatSwaggerError(err) {
+  if (err.failedValidation && err.originalResponse) {
+    var originalResponse = (err.originalResponse instanceof Buffer ? err.originalResponse : new Buffer(err.originalResponse.data)).toString('utf8');
+    try {
+      err.originalResponse = JSON.parse(originalResponse);
+    } catch (e) {
+      err.originalResponse = originalResponse;
+    }
+  }
 }

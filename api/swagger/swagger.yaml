@@ -121,7 +121,7 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/SuccessResponse"
+            $ref: "#/definitions/AuthTokenResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -167,10 +167,10 @@ definitions:
         type: string
   AuthTokenResponse:
     required:
-      - access_token
+      - token
       - expires_in
     properties:
-      access_token:
+      token:
         type: string
         description: The token used for granting access.
       expires_in:

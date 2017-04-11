@@ -16,7 +16,7 @@
     "mongodb": "^2.2.25",
     "mysql": "^2.13.0",
     "redis": "^2.7.1",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "0.1.0"
   },
   "devDependencies": {
     "should": "^7.1.0",

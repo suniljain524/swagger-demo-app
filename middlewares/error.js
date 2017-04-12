@@ -28,8 +28,19 @@ function init(app, config) {
 
   // Error handler
   app.use((err, req, res, next) => {
+
     let defaultStatusCode = 500;
     try {
+      req.logger.error({
+        error: 'request_error',
+        request: {
+          method: req.method,
+          url: req.url,
+          headers: req.headers,
+          body: req.body
+        },
+        __inner: err
+      });
       _formatSwaggerError(err);
       if (err instanceof AppError) {
         let appError = err.message;

@@ -24,8 +24,7 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
 
   process.env.SERVER_ENVIRONMENT == 'prod' ? _.extend(app.config, prodConfig) : _.extend(app.config, devConfig);
 
-  require('./middlewares/db').init(app);
-  require('./middlewares/cache').init(app);
+  require('./middlewares/logger').init(app);
   require('./middlewares/swagger').init(app, swaggerExpress, { });
   require('./middlewares/error').init(app);
 

@@ -9,6 +9,7 @@
   "main": "app.js",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "envalid": "^2.4.2",
     "express": "^4.12.3",
     "helmet": "^3.5.0",
     "jsonwebtoken": "^7.3.0",
@@ -16,7 +17,8 @@
     "mongodb": "^2.2.25",
     "mysql": "^2.13.0",
     "redis": "^2.7.1",
-    "swagger-express-mw": "0.1.0"
+    "swagger-express-mw": "0.1.0",
+    "winston-daily-rotate-file": "^1.4.6"
   },
   "devDependencies": {
     "should": "^7.1.0",

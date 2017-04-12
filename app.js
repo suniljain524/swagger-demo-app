@@ -6,6 +6,7 @@ let SwaggerExpress = require('swagger-express-mw');
 let app = require('express')();
 let helmet = require('helmet');
 let _ = require('lodash');
+let env = require('./env');
 
 module.exports = app; // for testing
 

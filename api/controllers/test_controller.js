@@ -57,7 +57,10 @@ function testRedis(req, res, next) {
 function imageUpload(req, res, next) {
 
   let reqPath = req.swagger.params.upfile.originalValue;
-  var path = 'uploads/';
+  var path = './uploads/';
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path);
+  }
   fs.writeFile( path + reqPath.originalname, reqPath.buffer , (err) => {
     if (err) {
       var err = { message: 'File not uploaded' };

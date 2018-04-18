@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     tools {
-        node {
+        nodejs {
   def nodeHome = tool name: 'node-6.10.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
   sh "${nodeHome}/bin/node -v"
 }

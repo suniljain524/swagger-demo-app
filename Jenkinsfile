@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     tools {
-      nodejs    'NodeJS 8.9.4'
+      nodejs 'node'
     }
 
     environment {

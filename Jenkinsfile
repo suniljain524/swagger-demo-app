@@ -20,8 +20,7 @@ pipeline {
                           extensions                       : [[$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: false],
                                                               [$class: 'LocalBranch', localBranch: 'master'],
                                                               [$class: 'WipeWorkspace']],
-                          submoduleCfg                     : [],
-                          userRemoteConfigs                : [[credentialsId: 'rahul', url: '']]])
+                          submoduleCfg                     : []
             }
         }
 

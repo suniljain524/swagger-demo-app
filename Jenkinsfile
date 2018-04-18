@@ -3,10 +3,11 @@ pipeline {
     agent any
 
     tools {
-        nodejs {
+ /*       nodejs {
   def nodeHome = tool name: 'node-9.8.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
   sh "${nodeHome}/bin/node -v"
-}
+}*/
+        nodeJS 'node 9'
     }
 
     stages {

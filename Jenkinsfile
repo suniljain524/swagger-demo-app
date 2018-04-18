@@ -22,7 +22,7 @@ pipeline {
                                                               [$class: 'LocalBranch', localBranch: 'master'],
                                                               [$class: 'WipeWorkspace']],
                           submoduleCfg                     : [],
-                          userRemoteConfigs                : [[credentialsId: 'oce-build-automation', url: 'git@github.com/suniljain524/swagger-demo-app.git']]])
+                          userRemoteConfigs                : [[credentialsId: 'sunil-jain-test-id', url: 'git@github.com/suniljain524/swagger-demo-app.git']]])
             }
         }
 

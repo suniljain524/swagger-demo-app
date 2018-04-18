@@ -16,7 +16,7 @@ pipeline {
             steps {
                 checkout([$class                           : 'GitSCM',
                           branches                         : [[name: '*/master']],
-                          browser                          : [$class: 'GithubWeb', repoUrl: 'https://github.com/suniljain524/swagger-demo-app.git'],
+                          browser                          : [$class: 'GithubWeb', repoUrl: 'https://github.com/suniljain524/swagger-demo-app'],
                           doGenerateSubmoduleConfigurations: false,
                           extensions                       : [[$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: false],
                                                               [$class: 'LocalBranch', localBranch: 'master'],

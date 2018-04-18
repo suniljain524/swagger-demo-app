@@ -1,13 +1,14 @@
+#!/usr/bin/env groovy
 
 pipeline {
     agent any
 
     tools {
- /*       nodejs {
-  def nodeHome = tool name: 'node-9.8.0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-  sh "${nodeHome}/bin/node -v"
-}*/
-        nodejs 'node'
+      nodejs    'NodeJS 8.9.4'
+    }
+
+    environment {
+      CHROME_BIN = '/usr/bin/chromium-browser'
     }
 
     stages {
@@ -20,26 +21,22 @@ pipeline {
                           extensions                       : [[$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: false],
                                                               [$class: 'LocalBranch', localBranch: 'master'],
                                                               [$class: 'WipeWorkspace']],
-                          submoduleCfg                     : []
-                    ])
+                          submoduleCfg                     : [],
+                          userRemoteConfigs                : [[credentialsId: 'oce-build-automation', url: 'git@github.com/suniljain524/swagger-demo-app.git']]])
             }
         }
 
         stage('Prepare') {
             steps {
-                sh 'npm i'
-                sh 'npm test'
+              sh 'rm -rf node_modules'
+              sh 'npm i'
+               sh 'npm test'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run start'
-            }
-            post {
-                success {
-                    junit testResults: '**/target/surefire-reports/**/*.xml', allowEmptyResults: true
-                }
+             sh 'npm build run'
             }
         }
     }
@@ -48,5 +45,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '15'))
         skipDefaultCheckout true
         timestamps()
+        disableConcurrentBuilds()
     }
 }

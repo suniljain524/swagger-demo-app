@@ -21,6 +21,7 @@ pipeline {
                                                               [$class: 'LocalBranch', localBranch: 'master'],
                                                               [$class: 'WipeWorkspace']],
                           submoduleCfg                     : []
+                    ])
             }
         }
 

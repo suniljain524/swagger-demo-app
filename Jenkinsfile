@@ -39,6 +39,7 @@ pipeline {
             // sh 'npm start'
             // sh 'sh ./script/build.sh'
               //  sh 'npm start'
+              echo 'build'
             }
         }
         

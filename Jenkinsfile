@@ -45,7 +45,7 @@ pipeline {
         
         stage('Publish to QA') {
             steps {
-              // sh ./script/publish.sh dev
+            
               sh  'NODE_ENV=qa npm run publish'
             }
         }

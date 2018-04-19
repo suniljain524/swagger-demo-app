@@ -37,10 +37,26 @@ pipeline {
         stage('Build') {
             steps {
             // sh 'npm start'
-            sh 'sh ./script/build.sh'
-                //sh 'npm run build'
+            // sh 'sh ./script/build.sh'
+                sh 'npm run build'
             }
         }
+        
+        stage('Publish to QA') {
+            steps {
+              // sh ./script/publish.sh dev
+              sh  'NODE_ENV=qa npm run publish'
+            }
+        }
+        
+                stage('Publish to dev') {
+            steps {
+              // sh ./script/publish.sh dev
+              sh  'NODE_ENV=dev npm run publish'
+            }
+        }
+        
+        
     }
 
     options {

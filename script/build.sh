@@ -5,7 +5,8 @@
 		echo	
 	   	echo
 	 	echo +++ Building Omni TagScript ... +++
-	    	sudo npm run build
+	    	# sudo npm run build
+		sh 'npm run build'
 		echo
 	    echo
 	   	echo  "Omni Tag Script built successfully"

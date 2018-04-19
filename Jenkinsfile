@@ -7,10 +7,6 @@ pipeline {
       nodejs 'node'
     }
 
-    environment {
-      CHROME_BIN = '/usr/bin/chromium-browser'
-    }
-
     stages {
         stage('Checkout') {
             steps {

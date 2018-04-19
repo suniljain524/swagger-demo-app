@@ -36,7 +36,8 @@ pipeline {
 
         stage('Build') {
             steps {
-             sh 'npm start'
+            // sh 'npm start'
+            sh ./script/build.sh
             }
         }
     }
